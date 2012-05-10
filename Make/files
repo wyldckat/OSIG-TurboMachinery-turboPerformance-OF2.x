@@ -7,5 +7,5 @@ fluidPower/fluidPowerFunctionObject.C
 turboPerformance/turboPerformance.C
 turboPerformance/turboPerformanceFunctionObject.C
 
-LIB = $(FOAM_SITE_LIBBIN)/libturboPerformance
+LIB = $(FOAM_USER_LIBBIN)/libturboPerformance
 
