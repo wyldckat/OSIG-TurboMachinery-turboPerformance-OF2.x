@@ -1,0 +1,11 @@
+forces/forces.C
+forces/forcesFunctionObject.C
+
+fluidPower/fluidPower.C
+fluidPower/fluidPowerFunctionObject.C
+
+turboPerformance/turboPerformance.C
+turboPerformance/turboPerformanceFunctionObject.C
+
+LIB = $(FOAM_SITE_LIBBIN)/libturboPerformance
+

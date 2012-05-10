@@ -1,0 +1,110 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     MRFsimpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         3000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+libs
+(
+);
+
+functions
+(
+    turboPerformance
+    {
+        type turboPerformance;
+        functionObjectLibs ("libturboPerformance.so");
+
+        turbine false;             // Turbine mode, (false if Pump)
+
+        log true;                  // write data to screen (true/false)
+        outputControl timeStep;    // write data to file (same options as case output)
+        outputInterval 1;          // interval to write data to file
+
+        inletPatches (inlet);           // inlet patches, can be multiple
+        outletPatches (outlet);       	// outlet patches, can be multiple
+        patches (rotor);     		// rotor/impeller patches, again can be multiple
+
+        rhoInf 998.0;                   // density
+        CofR (0 0 0);                   // center of rotation
+        omega (0 0 52.2395);   		// Rotational velocity (rad/s)
+     /*
+        pName  p;     		//Optional: if p field is not called "p", give a new name here
+        Uname Uabs;     	//Optional: if U field is not called "U", give a new name here
+        phiName phi;  		//Optional: if phi (flux) field is not called "phi", give a new name here
+     */
+    }
+
+    fluidPower
+    {
+        type fluidPower;
+        functionObjectLibs ("libturboPerformance.so");
+
+        turbine false;             // Turbine mode, (false if Pump)
+
+        log true;                  // write data to screen (true/false)
+        outputControl timeStep;    // write data to file (same options as case output)
+        outputInterval 1;          // interval to write data to file
+
+        inletPatches (inlet);
+        outletPatches (outlet);
+        rhoInf 998.0;
+    }
+
+    forces
+    {
+        type forces;
+        functionObjectLibs ("libturboPerformance.so");
+
+        log true;                  // write data to screen (true/false)
+        outputControl timeStep;    // write data to file (same options as case output)
+        outputInterval 1;          // interval to write data to file
+
+        patches (rotor);
+        rhoInf 998.0;
+        CofR (0 0 0);
+    }
+
+ );
+
+// ************************************************************************* //
