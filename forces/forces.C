@@ -74,7 +74,7 @@ Foam::tmp<Foam::volSymmTensorField> Foam::forces::devRhoReff() const
         const incompressible::LESModel& les
             = obr_.lookupObject<incompressible::LESModel>("LESProperties");
 
-        return rhoRef_*les.devBeff();
+        return rhoRef_*les.devReff();
     }
     else if (obr_.foundObject<basicThermo>("thermophysicalProperties"))
     {
