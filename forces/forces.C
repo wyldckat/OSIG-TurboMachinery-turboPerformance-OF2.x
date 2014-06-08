@@ -29,7 +29,7 @@ License
 #include "dictionary.H"
 #include "Time.H"
 
-#include "incompressible/singlePhaseTransportModel/singlePhaseTransportModel.H"
+#include "incompressible/transportModel/transportModel.H"
 #include "incompressible/RAS/RASModel/RASModel.H"
 #include "incompressible/LES/LESModel/LESModel.H"
 #include "fluidThermo.H"
@@ -87,11 +87,11 @@ Foam::tmp<Foam::volSymmTensorField> Foam::forces::devRhoReff() const
     }
     else if
     (
-        obr_.foundObject<singlePhaseTransportModel>("transportProperties")
+        obr_.foundObject<transportModel>("transportProperties")
     )
     {
-        const singlePhaseTransportModel& laminarT =
-            obr_.lookupObject<singlePhaseTransportModel>
+        const transportModel& laminarT =
+            obr_.lookupObject<transportModel>
             ("transportProperties");
 
         const volVectorField& U = obr_.lookupObject<volVectorField>(Uname_);
