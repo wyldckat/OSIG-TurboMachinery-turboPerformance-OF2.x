@@ -44,7 +44,7 @@ This is bound to the same license as OpenFOAM, namely GNU Public License v3. Quo
 
 
 How to get+build OSIG-TurboMachinery-turboPerformance-OF2.x from this repository
-==================================================
+================================================================================
 
 OpenFOAM 2.0.x
 --------------
@@ -54,7 +54,7 @@ For getting and building from git:
 git clone git://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x.git
 cd OSIG-TurboMachinery-turboPerformance-OF2.x
 git checkout of20x
-./Allwmake
+wmake libso
 ```
 
 For getting and building from zip:
@@ -62,7 +62,7 @@ For getting and building from zip:
 wget "https://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x/archive/of20x.zip" -O OSIG-TurboMachinery-turboPerformance-OF2.x.zip
 cd OSIG-TurboMachinery-turboPerformance-OF2.x-of20x
 chmod +x Allw* example/All*
-./Allwmake
+wmake libso
 ```
 
 
@@ -74,7 +74,7 @@ For getting and building from git:
 git clone git://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x.git
 cd OSIG-TurboMachinery-turboPerformance-OF2.x
 git checkout of21x
-./Allwmake
+wmake libso
 ```
 
 For getting and building from zip:
@@ -82,19 +82,19 @@ For getting and building from zip:
 wget "https://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x/archive/of21x.zip" -O OSIG-TurboMachinery-turboPerformance-OF2.x.zip
 cd OSIG-TurboMachinery-turboPerformance-OF2.x-of21x
 chmod +x Allw* example/All*
-./Allwmake
+wmake libso
 ```
 
 
 OpenFOAM 2.2.x
--------------------------------
+--------------
 
 For getting and building from git:
 ```
 git clone git://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x.git
 cd OSIG-TurboMachinery-turboPerformance-OF2.x
 git checkout of22x
-./Allwmake
+wmake libso
 ```
 
 For getting and building from zip:
@@ -102,19 +102,19 @@ For getting and building from zip:
 wget "https://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x/archive/of22x.zip" -O OSIG-TurboMachinery-turboPerformance-OF2.x.zip
 cd OSIG-TurboMachinery-turboPerformance-OF2.x-of22x
 chmod +x Allw* example/All*
-./Allwmake
+wmake libso
 ```
 
 
 OpenFOAM 2.3.x
--------------------------------
+--------------
 
 For getting and building from git:
 ```
 git clone git://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x.git
 cd OSIG-TurboMachinery-turboPerformance-OF2.x
 git checkout of23x
-./Allwmake
+wmake libso
 ```
 
 For getting and building from zip:
@@ -122,5 +122,5 @@ For getting and building from zip:
 wget "https://github.com/wyldckat/OSIG-TurboMachinery-turboPerformance-OF2.x/archive/of23x.zip" -O OSIG-TurboMachinery-turboPerformance-OF2.x.zip
 cd OSIG-TurboMachinery-turboPerformance-OF2.x-of23x
 chmod +x Allw* example/All*
-./Allwmake
+wmake libso
 ```
