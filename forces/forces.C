@@ -32,7 +32,7 @@ License
 #include "incompressible/singlePhaseTransportModel/singlePhaseTransportModel.H"
 #include "incompressible/RAS/RASModel/RASModel.H"
 #include "incompressible/LES/LESModel/LESModel.H"
-#include "basicThermo.H"
+#include "fluidThermo.H"
 #include "compressible/RAS/RASModel/RASModel.H"
 #include "compressible/LES/LESModel/LESModel.H"
 
@@ -67,7 +67,7 @@ Foam::tmp<Foam::volSymmTensorField> Foam::forces::devRhoReff() const
         const compressible::LESModel& les =
         obr_.lookupObject<compressible::LESModel>("LESProperties");
 
-        return les.devRhoBeff();
+        return les.devRhoReff();
     }
     else if (obr_.foundObject<incompressible::LESModel>("LESProperties"))
     {
@@ -76,10 +76,10 @@ Foam::tmp<Foam::volSymmTensorField> Foam::forces::devRhoReff() const
 
         return rhoRef_*les.devReff();
     }
-    else if (obr_.foundObject<basicThermo>("thermophysicalProperties"))
+    else if (obr_.foundObject<fluidThermo>("thermophysicalProperties"))
     {
-        const basicThermo& thermo =
-             obr_.lookupObject<basicThermo>("thermophysicalProperties");
+        const fluidThermo& thermo =
+             obr_.lookupObject<fluidThermo>("thermophysicalProperties");
 
         const volVectorField& U = obr_.lookupObject<volVectorField>(Uname_);
 
@@ -272,6 +272,11 @@ void Foam::forces::execute()
 }
 
 void Foam::forces::end()
+{
+    // Do nothing - only valid on write
+}
+
+void Foam::forces::timeSet()
 {
     // Do nothing - only valid on write
 }

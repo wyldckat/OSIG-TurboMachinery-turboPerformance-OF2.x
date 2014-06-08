@@ -68,6 +68,7 @@ namespace Foam
 // Forward declaration of classes
 class objectRegistry;
 class dictionary;
+class polyMesh;
 class mapPolyMesh;
 
 /*---------------------------------------------------------------------------*\
@@ -174,19 +175,6 @@ protected:
         virtual void writeFileHeader();
 
 
-        // Functions to be over-ridden from IOoutputFilter class
-       /*
-        I'm royally confused by these two virtual functions. Hopefully I'll be able to get a clarification for this.
-        - mikko
-       */
-
-
-            //- Update mesh
-            virtual void updateMesh(const mapPolyMesh&);
-
-            //- Move points
-            virtual void movePoints(const Field<point>&);
-
 public:
 
     //- Runtime type information
@@ -231,8 +219,26 @@ public:
         //- Execute at the final time-loop, currently does nothing
         virtual void end();
 
+        //- Called when time was set at the end of the Time::operator++
+        //  Currently does nothing.
+        virtual void timeSet();
+        
         //- Calculate and return the work output and hydrodynamic head
         virtual dEmHead calcDEmHead() const;
+
+        // Functions to be over-ridden from IOoutputFilter class
+       /*
+        I'm royally confused by these two virtual functions. Hopefully I'll be able to get a clarification for this.
+        - mikko
+       */
+
+        //- Update for changes of mesh
+        virtual void updateMesh(const mapPolyMesh&)
+        {}
+
+        //- Update for changes of mesh
+        virtual void movePoints(const polyMesh&)
+        {}
 
 };
 

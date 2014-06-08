@@ -212,6 +212,11 @@ void Foam::fluidPower::end()
     // Do nothing - only valid on write
 }
 
+void Foam::fluidPower::timeSet()
+{
+    // Do nothing - only valid on write
+}
+
 void Foam::fluidPower::write()
 {
     if (active_)
@@ -304,17 +309,6 @@ Foam::fluidPower::dEmHead Foam::fluidPower::calcDEmHead() const
     }
 	
     return dEmH;
-}
-
-void Foam::fluidPower::updateMesh(const mapPolyMesh&)
-{
-    // Do nothing
-}
-
-
-void Foam::fluidPower::movePoints(const pointField&)
-{
-    // Do nothing
 }
 
 // ************************************************************************* //

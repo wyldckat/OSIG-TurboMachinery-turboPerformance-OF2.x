@@ -75,6 +75,11 @@ void Foam::turboPerformance::end()
     // Do nothing - only valid on write
 }
 
+void Foam::turboPerformance::timeSet()
+{
+    // Do nothing - only valid on write
+}
+
 void Foam::turboPerformance::read(const dictionary& dict)
 {
     if (fluidPower::active_)
@@ -140,16 +145,6 @@ void Foam::turboPerformance::write()
             }
         }
     }
-}
-
-void Foam::turboPerformance::updateMesh(const mapPolyMesh&)
-{
-    // Do nothing
-}
-
-void Foam::turboPerformance::movePoints(const pointField&)
-{
-    // Do nothing
 }
 
 // ************************************************************************* //

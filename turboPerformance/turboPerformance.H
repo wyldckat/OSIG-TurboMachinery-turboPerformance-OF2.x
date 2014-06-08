@@ -54,6 +54,9 @@ Modifications
 namespace Foam
 {
 
+// Forward declaration of classes
+class polyMesh;
+
 /*---------------------------------------------------------------------------*\
                         Class turboPerformance Declaration
 \*---------------------------------------------------------------------------*/
@@ -81,14 +84,6 @@ protected:
 
     //- Output file header information
     virtual void writeFileHeader();
-
-        // Functions to be over-ridden from IOoutputFilter class
-
-            //- Update mesh
-            virtual void updateMesh(const mapPolyMesh&);
-
-            //- Move points
-            virtual void movePoints(const Field<point>&);
 
 public:
 
@@ -123,13 +118,23 @@ public:
         //- Execute at the final time-loop, currently does nothing
         virtual void end();
 
+        //- Called when time was set at the end of the Time::operator++
+        //  Currently does nothing.
+        virtual void timeSet();
+
         //- Read the forces data
         virtual void read(const dictionary&);
 
         //- Calculate the forces and write
         virtual void write();
 
+        //- Update for changes of mesh
+        virtual void updateMesh(const mapPolyMesh&)
+        {}
 
+        //- Update for changes of mesh
+        virtual void movePoints(const polyMesh&)
+        {}
 };
 
 
